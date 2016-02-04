@@ -1,0 +1,22 @@
+{
+  "name": "vair_log",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/vair/vair_log.git"
+  },
+  "keywords": [
+    "commons"
+  ],
+  "author": "William Chen",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/vair/vair_log#readme",
+  "dependencies": {
+    "log": "^1.4.0"
+  }
+}
