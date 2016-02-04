@@ -9,5 +9,3 @@ module.exports.getLogger = (level = "info", file = {path: "./", name: ""}) ->
 		filePath = path.resolve file.path, file.name
 		return new Log(level, fs.createWriteStream filePath)
 	return new Log(level)
-
-module.exports.Logger = Logger
