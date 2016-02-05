@@ -14,15 +14,14 @@ getLogger = (level, file) ->
 	if level?
 		defaultLevel = level
 
-	if file.name? 
-		defaultFile.name = file.name
+	if file?
+		if file.name? and file.name != "" 
+			defaultFile.name = file.name
 
-	if file.path?
-		defaultFile.path = path
+		if file.path?
+			defaultFile.path = path
 
-
-	if file.name != ""
-		filePath = path.resolve file.path, file.name
+		filePath = path.resolve defaultFile.path, defaultFile.name
 		return new Log(level, fs.createWriteStream filePath)
 	return new Log(level)
 
