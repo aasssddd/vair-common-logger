@@ -4,7 +4,8 @@ Log = require 'log'
 fs = require 'fs'
 path = require 'path'
 
-module.exports.getLogger = (level, file) ->
+
+getLogger = (level, file) ->
 	defaultLevel = 'info'
 	defaultFile = 
 		path: './'
@@ -24,3 +25,5 @@ module.exports.getLogger = (level, file) ->
 		filePath = path.resolve file.path, file.name
 		return new Log(level, fs.createWriteStream filePath)
 	return new Log(level)
+
+module.exports = getLogger
