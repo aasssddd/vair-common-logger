@@ -1,10 +1,10 @@
 {
   "name": "vair_log",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.coffee",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "coffee test.coffee"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/vair/vair_log#readme",
   "dependencies": {
-    "log": "^1.4.0"
+    "moment": "^2.11.2",
+    "winston": "^2.1.1",
+    "winston-daily-rotate-file": "^1.0.1"
   }
 }
