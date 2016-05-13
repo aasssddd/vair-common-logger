@@ -1,11 +1,19 @@
 # test.coffee
-getLogger = require './index'
+Logger = require './logger'
 
-logger = getLogger 'debug'
-file_logger = getLogger 'debug', { name: 'test.log'}
+# use default location config file
+logger = Logger.getLogger()
 
-logger.debug 'this log should not show'
-file_logger.debug 'this log should not show in file'
+logger.info "this logger will write to console, file and logentries"
 
-logger.info 'this is info log'
-file_logger.info 'this is info log of file'
+# create logger by pass parameters
+logger2 = Logger.getLogger {
+	file: 
+		level: "info",
+		name: "logger2.log",
+		path: null
+	console: 
+		level: "info"
+}
+
+logger2.info "logger2 will write to console and file"
