@@ -3,7 +3,6 @@
 winston = require 'winston'
 path = require 'path'
 moment = require 'moment'
-Logger = require './logger'
 
 
 getLogger = (level, file) ->
@@ -40,4 +39,7 @@ getLogger = (level, file) ->
 
 	return logger
 
-module.exports = getLogger, Logger
+module.exports = {
+	getLogger: getLogger,
+	Logger: require './logger'
+}

@@ -37,7 +37,7 @@ class Logger
 		if not opts?
 			stat = fs.statSync path.resolve "./log_config.coffee"
 			if stat.isFile()
-				opt = require './log_config'
+				opt = require "#{path.resolve "./log_config"}"
 			else
 				opt = option
 		else if opts is 'string'
