@@ -1,6 +1,6 @@
 # index_new.coffee
 winston = require 'winston'
-Logentries = require 'winston-logentries'
+Logentries = require('winston-logentries-transport').Logentries
 moment = require 'moment'
 fs = require 'fs'
 path = require 'path'
@@ -35,10 +35,13 @@ class Logger
 
 		opt = null
 		if not opts?
-			stat = fs.statSync path.resolve "./log_config.coffee"
-			if stat.isFile()
-				opt = require "#{path.resolve "./log_config"}"
-			else
+			try
+				stat = fs.statSync path.resolve "./log_config.coffee"
+				if stat.isFile()
+					opt = require "#{path.resolve "./log_config"}"
+				else
+					opt = option
+			catch 
 				opt = option
 		else if opts is 'string'
 			opt = require "#{path.resolve opts}"
@@ -53,10 +56,16 @@ class Logger
 		}
 
 		if opt.logentries? and opt.logentries.token?
-			appender.push new winston.transports.Logentries {
+			appender.push new Logentries {
 				name: "testlogger-logentries",
 				token: opt.logentries.token,
-				level: "#{if opt.logentries.level? then opt.logentries.level else option.logentries.level}"
+				level: "#{if opt.logentries.level? then opt.logentries.level else option.logentries.level}",
+				levels: {
+					debug: 0,
+					info: 1,
+					warn: 2,
+					error: 3
+				}
 			}
 
 		logger = new winston.Logger { transports: appender }

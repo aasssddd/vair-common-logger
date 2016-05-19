@@ -9,6 +9,6 @@ module.exports = {
 	},
 	logentries: {
 		"level": "info",
-		"token": "3e73d2ee-3cb1-4e33-97b1-bcd47548a92d"
+		"token": "7a6b50b7-b6a1-4a31-b9a8-dfcbf66321f8"
 	}
 }
