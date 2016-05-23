@@ -15,3 +15,8 @@ Common library for log
     log2 = Logger.getLogger 'info', file: {path: './', name: 'file_log.log'}
     log.info 'aaaa' # this will write aaaa to file_log.log 
 
+
+    [^1]
+
+
+[^1]: test haha
