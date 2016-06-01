@@ -66,6 +66,7 @@ class Logger
 				name: "testlogger-logentries",
 				token: opt.logentries.token,
 				level: "#{if opt.logentries.level? then opt.logentries.level else option.logentries.level}",
+				levels: levels
 			}
 
 		logger = new winston.Logger { transports: appender, levels: levels }
