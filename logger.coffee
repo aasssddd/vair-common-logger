@@ -22,6 +22,12 @@ class Logger
 		}
 	###
 	@getLogger: (opts) ->
+		levels = 
+			trace: 0
+			debug: 1
+			info: 2
+			warn: 3
+			error: 4
 		option =
 			file: 
 				level: "info"
@@ -60,15 +66,9 @@ class Logger
 				name: "testlogger-logentries",
 				token: opt.logentries.token,
 				level: "#{if opt.logentries.level? then opt.logentries.level else option.logentries.level}",
-				levels: {
-					debug: 0,
-					info: 1,
-					warn: 2,
-					error: 3
-				}
 			}
 
-		logger = new winston.Logger { transports: appender }
+		logger = new winston.Logger { transports: appender, levels: levels }
 
 		if opt.file? and opt.file.name?
 			if not opt.file.path?
