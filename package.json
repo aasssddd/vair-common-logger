@@ -17,9 +17,9 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/vair/vair_log#readme",
   "dependencies": {
+    "le_node": "^1.3.2",
     "moment": "^2.11.2",
     "winston": "^2.1.1",
-    "winston-daily-rotate-file": "^1.0.1",
-    "winston-logentries-transport": "0.0.1"
+    "winston-daily-rotate-file": "^1.0.1"
   }
 }

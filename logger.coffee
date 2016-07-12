@@ -1,6 +1,6 @@
 # index_new.coffee
 winston = require 'winston'
-Logentries = require('winston-logentries-transport').Logentries
+Logentries = require 'le_node'
 moment = require 'moment'
 fs = require 'fs'
 path = require 'path'
@@ -58,16 +58,11 @@ class Logger
 
 		appender.push new winston.transports.Console {
 			name: "testlogger-console",
+			timestamp: () ->
+				return Date.now()
 			level: "#{if opt.console? and opt.console.level? then opt.console.level else option.console.level}"
 		}
 
-		if opt.logentries? and opt.logentries.token?
-			appender.push new Logentries {
-				name: "testlogger-logentries",
-				token: opt.logentries.token,
-				level: "#{if opt.logentries.level? then opt.logentries.level else option.logentries.level}",
-				levels: levels
-			}
 
 		logger = new winston.Logger { transports: appender, levels: levels }
 
@@ -80,6 +75,15 @@ class Logger
 				filename: "#{path.resolve opt.file.path, opt.file.name}",
 				level: "#{if opt.file.level? then opt.file.level else option.file.level}",
 				datePattern: ".yyyy-MM-dd"
+			}
+
+		if opt.logentries? and opt.logentries.token?
+			logger.add winston.transports.Logentries, {
+				# name: "testlogger-logentries",
+				token: opt.logentries.token,
+				timeout: 5000
+				level: "#{if opt.logentries.level? then opt.logentries.level else option.logentries.level}",
+				levels: levels
 			}
 
 
